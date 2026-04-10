@@ -1,0 +1,27 @@
+# Entorn local (Docker / Make): no es puja a GitHub
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+Makefile
+.dockerignore
+
+# Variables d'entorn
+.env
+.env.*
+!.env.example
+
+# Eines i sistema
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# Si més endavant afegiu Composer
+/vendor/
+
+# Migracions i seeds locals (no es puja a GitHub)
+/migrations/
+/seeds/
+/database/migrations/
+/database/seeds/
