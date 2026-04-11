@@ -1,11 +1,17 @@
 <?php
 
-var_dump($_POST);
+require_once __DIR__ . '/objectes/Usuari.php';
+
 // Verificar si s'ha enviat el formulari de login
 if (isset($_POST['nom']) && isset($_POST['contrasenya'])) {
+    $usuari = new Usuari($_POST['nom'], $_POST['contrasenya']);
 
+    if ($usuari->login()) {
+        echo "Login correcte";
+    } else {
+        $loginError = true;
+    }
 }
-
 ?>
 
 <!DOCTYPE html
