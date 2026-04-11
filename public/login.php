@@ -5,7 +5,11 @@ require_once __DIR__ . '/objectes/Usuari.php';
 
 // Un cop loguejats, evitar poder entrar al login sense un logout primer (Evitar doble login)
 if (isset($_SESSION['id'])) {
-    header('Location: index.php');
+    if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin') {
+        header('Location: gestiomoviments.php');
+    } else {
+        header('Location: crearmoviments.php');
+    }
     exit();
 }
 
@@ -21,7 +25,11 @@ if (isset($_POST['nom']) && isset($_POST['contrasenya'])) {
         // Sense exit(), el header nomes afageix la capçalera HTTP i continua la execució del script
             // El client pot rebre redirecció + cos HTML en la mateixa resposta, cosa innecessària i poc clara.
 
-        header('Location: index.php');
+        if ($usuari->getRol() === 'admin') {
+            header('Location: gestiomoviments.php');
+        } else {
+            header('Location: crearmoviments.php');
+        }
         exit();
     } else {
         $loginError = true;
@@ -29,7 +37,7 @@ if (isset($_POST['nom']) && isset($_POST['contrasenya'])) {
 }
 ?>
 
-<!DOCTYPE html
+<!DOCTYPE html>
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
