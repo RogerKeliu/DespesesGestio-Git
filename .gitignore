@@ -20,6 +20,9 @@ Makefile
 # Si més endavant afegiu Composer
 /vendor/
 
+# Inicialització local de BD (usuari/contrasenya per defecte)
+public/objectes/InicialitzacioBD.php
+
 # Migracions i seeds locals (no es puja a GitHub)
 /migrations/
 /seeds/
