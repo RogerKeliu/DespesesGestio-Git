@@ -25,3 +25,4 @@ Makefile
 /seeds/
 /database/migrations/
 /database/seeds/
+/public/objectes/InicialitzacioBD.php
