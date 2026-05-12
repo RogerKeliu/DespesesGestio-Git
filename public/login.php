@@ -1,11 +1,32 @@
 <?php
+session_start();
 
-var_dump($_POST);
-// Verificar si s'ha enviat el formulari de login
-if (isset($_POST['nom']) && isset($_POST['contrasenya'])) {
+require_once __DIR__ . '/objectes/Usuari.php';
 
+// Un cop loguejats, evitar poder entrar al login sense un logout primer (Evitar doble login)
+if (isset($_SESSION['id'])) {
+    header('Location: index.php');
+    exit();
 }
 
+// Verificar si s'ha enviat el formulari de login
+if (isset($_POST['nom']) && isset($_POST['contrasenya'])) {
+    $usuari = new Usuari($_POST['nom'], $_POST['contrasenya']);
+
+    if ($usuari->login()) {
+        $_SESSION['id'] = $usuari->getId();
+        $_SESSION['nom'] = $usuari->getNom();
+        $_SESSION['rol'] = $usuari->getRol();
+        
+        // Sense exit(), el header nomes afageix la capçalera HTTP i continua la execució del script
+            // El client pot rebre redirecció + cos HTML en la mateixa resposta, cosa innecessària i poc clara.
+
+        header('Location: index.php');
+        exit();
+    } else {
+        $loginError = true;
+    }
+}
 ?>
 
 <!DOCTYPE html
