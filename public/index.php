@@ -22,7 +22,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <?php if ($benvingutText): ?>
+                    <?php if (isset($benvingutText) && $benvingutText): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><?php echo $benvingutText; ?></a>
                         </li>
