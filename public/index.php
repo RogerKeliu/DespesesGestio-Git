@@ -1,10 +1,7 @@
 <?php
 session_start();
-// Verificar si l'usuari ha iniciat sessió
 $benvingutText = isset($_SESSION["nom"]) ? "Benvingut, " . $_SESSION["nom"] . "!" : "";
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ca">

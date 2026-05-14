@@ -8,7 +8,6 @@ require_once __DIR__ . '/objectes/Categoria.php';
 
 Autenticacio::requerirAdmin();
 
-/** Redirecció després de POST (evita reenviament del formulari). */
 function redirigirAmbMissatge(string $missatge): never
 {
     header('Location: gestioCategories.php?msg=' . rawurlencode($missatge));

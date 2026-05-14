@@ -3,7 +3,6 @@ session_start();
 
 require_once __DIR__ . '/objectes/Usuari.php';
 
-// Un cop loguejats, evitar poder entrar al login sense un logout primer (Evitar doble login)
 if (isset($_SESSION['id'])) {
     if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin') {
         header('Location: gestiomoviments.php');
@@ -13,7 +12,6 @@ if (isset($_SESSION['id'])) {
     exit();
 }
 
-// Verificar si s'ha enviat el formulari de login
 if (isset($_POST['nom']) && isset($_POST['contrasenya'])) {
     $usuari = new Usuari($_POST['nom'], $_POST['contrasenya']);
 
@@ -21,9 +19,6 @@ if (isset($_POST['nom']) && isset($_POST['contrasenya'])) {
         $_SESSION['id'] = $usuari->getId();
         $_SESSION['nom'] = $usuari->getNom();
         $_SESSION['rol'] = $usuari->getRol();
-        
-        // Sense exit(), el header nomes afageix la capçalera HTTP i continua la execució del script
-            // El client pot rebre redirecció + cos HTML en la mateixa resposta, cosa innecessària i poc clara.
 
         if ($usuari->getRol() === 'admin') {
             header('Location: gestiomoviments.php');
