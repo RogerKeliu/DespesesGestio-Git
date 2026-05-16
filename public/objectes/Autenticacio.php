@@ -24,7 +24,6 @@ class Autenticacio
         }
     }
 
-    /** Només administradors; la resta va a la pàgina de creació (o es pot canviar més endavant). */
     public static function requerirAdmin(): void
     {
         self::requerirLogin();

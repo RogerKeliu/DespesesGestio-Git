@@ -41,7 +41,7 @@ $plantillaEsAdmin = Autenticacio::esAdmin();
                         <a class="nav-link p-2 <?= $plantillaSeccio === 'moviments' ? 'fw-semibold text-dark' : '' ?>"
                            href="gestiomoviments.php">Moviments</a>
                         <a class="nav-link p-2 <?= $plantillaSeccio === 'categories' ? 'fw-semibold text-dark' : '' ?>"
-                           href="#">Categories</a>
+                           href="gestioCategories.php">Categories</a>
                     <?php endif; ?>
                     <a class="nav-link p-2 <?= $plantillaEsAdmin ? 'ms-3 ms-md-4' : '' ?>"
                        href="logout.php">Sortir</a>
